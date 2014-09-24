@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Matt Bloom | Front-End Developer</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Matt Bloom">
+		<link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./static/css/style.css">
+	</head>
+	<body>
+		<div id="content">
+			<div id="container">
+				<div id="name">
+					<img src="./static/img/sign_black.png" alt="signarture" id="signature">
+					<p id="words">profile</p>
+				</div>
+				<div id="banner-words">
+					<i class="inliner"></i>
+					<div id="titles" class="row">
+						<h2>Please be check back later, the website is currently being updated.<br>In the meantime, <a href="https://github.com/MBloom/">check me out on GitHub</a></h2>
+						<!-- <a href="#"><h1>designer</h1></a>
+						<a href="#"><h1 id="primary">front-end developer</h1></a>
+						<a href="#"><h1>photographer</h1></a> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!-- Placed at the end so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	$('#signature').hover(function(){
+	    $('#words').addClass('visible');
+	    $('#signature').addClass('visible');
+	    $('#who').addClass('bumped');
+	},function(){
+	    $('#words').removeClass('visible');
+	    $('#signature').removeClass('visible');
+	    $('#who').removeClass('bumped');
+	});
+	</script>
+</html>
