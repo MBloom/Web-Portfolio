@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Photos | Matt Bloom</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Matt Bloom">
+		<link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata|Josefin+Slab:100,300,400,600,700|Lato:100,300,400,700|Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../static/css/style.css">
+	</head>
+	<body>
+		<nav id="navbar">
+        	<div class="row">
+	            <a href="../index.html">
+	                <img src="../static/img/signature.png" alt="logo">
+	            </a>
+	            <a class="navicon-button x">
+			    	<div class="navicon"></div>
+				</a>
+	        </div>
+	        <div id="nav-list">
+	        	<ul>
+	            	<li><a href="./">/projects</a></li>
+	            	<li><a href="../photos.html">/film</a></li>
+	                <li><a href="#">/profile</a></li>
+	            </ul>
+	        </div>
+        </nav>
+		<div id="content">
+			<div id="container">
+				<h1 id="select">Selected Photos</h1>
+				<div id="image-grid" class="row">
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-03.jpg" alt=""></div>
+					<div class="grid-item col2 landscape"><img src="./static/img/sm_img-04.jpg" alt=""></div>
+					<div class="grid-item col1 portrait"><img src="./static/img/sm_img-05.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-06.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-07.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-01.jpg" alt=""></div>
+					<div class="grid-item col1 portrait"><img src="./static/img/sm_img-02.jpg" alt=""></div>
+					<div class="grid-item col2 portrait"><img src="./static/img/sm_img-08.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-09.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-10.jpg" alt=""></div>
+					<div class="grid-item col1 portrait"><img src="./static/img/sm_img-11.jpg" alt=""></div>
+					<div class="grid-item col2 landscape"><img src="./static/img/sm_img-12.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-13.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-22.jpg" alt=""></div>
+					<div class="grid-item col2 landscape"><img src="./static/img/sm_img-14.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-15.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-20.jpg" alt=""></div>
+					<div class="grid-item col1 landscape"><img src="./static/img/sm_img-19.jpg" alt=""></div>
+					<div class="grid-item col2 landscape"><img src="./static/img/sm_img-18.jpg" alt=""></div>
+					<div class="grid-item col1 portrait"><img src="./static/img/sm_img-17.jpg" alt=""></div>
+					<div class="grid-item col1 portrait"><img src="./static/img/sm_img-16.jpg" alt=""></div>
+				</div>
+			</div>
+		</div>
+		<div id="image-holder" onclick="closeImage(this);"></div>
+		<footer>
+			<p>Matt Bloom &copy; 2014</p>
+		</footer>
+	</body>
+	<!-- Placed at the end so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+	<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+	<script src="../js/script.js"></script>
+	<script>
+		//history.js
+	$(function(){
+		var History = window.History;
+		if (History.enabled) {
+			State = History.getState();
+			// set initial state to first page that was loaded
+			History.pushState({urlPath: window.location.pathname}, $("title").text(), State.urlPath);
+		} else {
+			return false;
+		}
+
+		// Content update and back/forward button handler
+		History.Adapter.bind(window, 'statechange', function() {
+			var State = History.getState();
+			$.get(State.url, function(data) {
+			    $('#content').fadeTo(600, 0, function() {
+					$('#content').html($(data).find('#container').html()).delay(200).fadeTo(600, 1);
+					masonryInit();
+				});
+			});
+		});
+
+		// navigation link handler
+		$('body').on('click', 'a', function(e) {
+			e.preventDefault();
+			var urlPath = $(this).attr('href');
+			var title = $(this).text();
+			History.pushState({urlPath: urlPath}, title, urlPath);
+		});
+	});
+	</script>
+</html>

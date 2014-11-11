@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Projects | Matt Bloom</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Matt Bloom">
+		<link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata|Lato:100,300,400,700|Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../static/css/style.css">
+	</head>
+	<body>
+		<nav id="navbar">
+        	<div class="row">
+	            <img src="../static/img/signature.png" alt="logo">
+	            <a class="navicon-button x ignore">
+			    	<div class="navicon"></div>
+				</a>
+	        </div>
+	        <div id="nav-list" class="strike-through">
+	        	<ul>
+	            	<li><a href="./">/projects</a></li>
+	            	<li><a href="../photos.html">/film</a></li>
+	                <li><a href="#">/profile</a></li>
+	            </ul>
+	        </div>
+        </nav>
+		<div id="content">
+			<div id="container">
+				<div id="projects-list" class="row cross">
+					<h1 id="select">Selected Projects</h1>
+					<p>I</p><h2><a href="./bsl.html">BluestoneLogic</a></h2>
+					<p>II</p><h2><a href="#">SAMCloud</a></h2>
+					<p>III</p><h2><a href="#">DIGINIT</a></h2>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<p>Matt Bloom &copy; 2014</p>
+		</footer>
+	</body>
+	<!-- Placed at the end so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+	<script src="../js/jquery.history.js"></script>
+	<script src="../js/script.js"></script>
+	<script>
+	//history.js
+	$(function(){
+		var History = window.History;
+		if (History.enabled) {
+			State = History.getState();
+			// set initial state to first page that was loaded
+			History.pushState({urlPath: window.location.pathname}, $("title").text(), State.urlPath);
+		} else {
+			return false;
+		}
+
+		// Content update and back/forward button handler
+		History.Adapter.bind(window, 'statechange', function() {
+			var State = History.getState();
+			$.get(State.url, function(data) {
+			    $('#content').fadeTo(600, 0, function() {
+					$('#content').html($(data).find('#container').html()).delay(200).fadeTo(600, 1);
+					masonryInit();
+				});
+			});
+		});
+
+		// navigation link handler
+		$('body').on('click', 'a:not(.ignore)', function(e) {
+			e.preventDefault();
+			var urlPath = $(this).attr('href');
+			var title = $(this).text();
+			History.pushState({urlPath: urlPath}, title, urlPath);
+		});
+	});
+	</script>
+</html>

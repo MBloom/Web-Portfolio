@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Matt Bloom | Front-End Developer</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Matt Bloom">
+        <link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+        <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Josefin+Slab:100,300,400,600,700|Lato:100,300,400,700|Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+    <body>
+        <nav id="navbar">
+        	<div class="row">
+	            <a href="../index.html">
+	                <img src="../static/img/signature.png" alt="logo">
+	            </a>
+	            <a class="navicon-button x">
+			    	<div class="navicon"></div>
+				</a>
+	        </div>
+	        <div id="nav-list">
+	        	<ul>
+	            	<li><a href="./">/projects</a></li>
+	            	<li><a href="../photos.html">/film</a></li>
+	                <li><a href="#">/profile</a></li>
+	            </ul>
+	        </div>
+        </nav>
+        <div id="content">
+            <div id="container">
+                <div id="bsl-details" class="row">
+                    <div class="arrow-holder">
+                        <a href="./"><img id="back-arrow" alt="back-arrow" src="../static/img/back_arrow.png"></a>
+                    </div>
+                    <div class="title">
+                        <h2>BluestoneLogic</h2>
+                        <p>Type</p><h3>Web Development</h3>
+                        <p>Year</p><h3>2014</h3>
+                        <p>Live</p><h3>BluestoneLogic.com</h3>
+                    </div>
+                    <div class="img-holder">
+                        <img src="../static/img/bluestone.png" alt="bluestone" >
+                    </div>
+                    <div class="text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac facilisis purus. Suspendisse et ipsum non enim finibus gravida quis in magna. Donec in interdum orci, nec varius eros. Nulla id auctor augue. Vivamus lobortis id est sed porta. Proin orci ipsum, dictum a nisl quis, condimentum vulputate metus. Proin posuere consectetur tellus, scelerisque scelerisque velit. Curabitur vel justo tristique, varius nisi maximus, viverra ex. Pellentesque maximus, turpis ut ultricies tempus, enim magna commodo tortor, in pharetra est nisl in orci. Praesent porta hendrerit tellus. Nunc condimentum porttitor est, at rutrum eros facilisis et. Suspendisse ultrices tellus sed turpis auctor luctus. Cras varius odio ut felis placerat sodales. Vestibulum ullamcorper sit amet erat nec lobortis.</p>
+                        <p>Vivamus nec eros in arcu blandit interdum. In pharetra faucibus lacinia. Etiam ultricies nibh eu justo malesuada, id fermentum enim cursus. Praesent sit amet nunc non neque laoreet fringilla. Quisque quis auctor lacus. Nunc vel tristique dolor. In tristique ac eros et mattis. Pellentesque nec nunc venenatis, aliquet dolor et, congue nulla. Nullam rutrum sapien a nisi rhoncus scelerisque. Vestibulum a lobortis nisl. Sed malesuada et libero quis egestas. Nulla facilisi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>Matt Bloom &copy; 2014</p>
+        </footer>
+    </body>
+    <!-- Placed at the end so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+    <<script>
+        $(function(){
+            var History = window.History;
+            if (History.enabled) {
+                State = History.getState();
+                // set initial state to first page that was loaded
+                History.pushState({urlPath: window.location.pathname}, $("title").text(), State.urlPath);
+            } else {
+                return false;
+            }
+
+            // Content update and back/forward button handler
+            History.Adapter.bind(window, 'statechange', function() {
+                var State = History.getState();
+                $.get(State.url, function(data) {
+                    $('#content').fadeTo(600, 0, function() {
+                        $('#content').html($(data).filter('#container').html()).delay(200).fadeTo(600, 1);
+                    });
+                });
+            });
+
+            // navigation link handler
+            $('body').on('click', 'a', function(e) {
+                e.preventDefault();
+                var urlPath = $(this).attr('href');
+                var title = $(this).text();
+                History.pushState({urlPath: urlPath}, title, urlPath);
+            });
+        });
+    </script>
+    <script>
+        $("#navbar ul a").on('click', function(e){
+            e.preventDefault();
+            $(this).closest('li').addClass('current').siblings().removeClass('current')
+        })
+        $(window).scroll(function(){
+            if($(window).scrollTop() > 50)
+                $('#select').css('opacity', '0');
+            else
+                $('#select').css('opacity', '1');
+        })
+    </script>
+</html>
