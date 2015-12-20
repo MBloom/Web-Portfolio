@@ -20,8 +20,8 @@
 	        </div>
 	        <div id="nav-list" class="strike-through">
 	        	<ul>
-	            	<li><a href="./">/projects</a></li>
-	            	<li><a href="../photos.html">/film</a></li>
+	            	<li><a href="./" title="Projects | Matt Bloom">/projects</a></li>
+	            	<li><a href="../photos.html" title="Photos | Matt Bloom">/film</a></li>
 	                <li><a href="#">/profile</a></li>
 	            </ul>
 	        </div>
@@ -30,8 +30,8 @@
 			<div id="container">
 				<div id="projects-list" class="row cross">
 					<h1 id="select">Selected Projects</h1>
-					<p>I</p><h2><a href="./bsl.html">BluestoneLogic</a></h2>
-					<p>II</p><h2><a href="#">SAMCloud</a></h2>
+					<p>I</p><h2><a href="./bsl.html" title="BluestoneLogic | Matt Bloom">BluestoneLogic</a></h2>
+					<p>II</p><h2><a href="./samcloud.html" title="SAMcloud | Matt Bloom">SAMCloud</a></h2>
 					<p>III</p><h2><a href="#">DIGINIT</a></h2>
 				</div>
 			</div>
@@ -61,8 +61,9 @@
 		History.Adapter.bind(window, 'statechange', function() {
 			var State = History.getState();
 			$.get(State.url, function(data) {
+				var newData = $(data).find('#container').parent().html();
 			    $('#content').fadeTo(600, 0, function() {
-					$('#content').html($(data).find('#container').html()).delay(200).fadeTo(600, 1);
+					$('#content').html(newData).delay(200).fadeTo(600, 1);
 					masonryInit();
 				});
 			});
@@ -72,7 +73,7 @@
 		$('body').on('click', 'a:not(.ignore)', function(e) {
 			e.preventDefault();
 			var urlPath = $(this).attr('href');
-			var title = $(this).text();
+			var title = $(this).attr('title');
 			History.pushState({urlPath: urlPath}, title, urlPath);
 		});
 	});

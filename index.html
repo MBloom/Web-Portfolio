@@ -1,77 +1,63 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 	<head>
 		<title>Matt Bloom | Front-End Developer</title>
 		<meta charset="utf-8">
 		<meta name="author" content="Matt Bloom">
 		<link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
-		<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata|Lato:100,300,400,700|Merriweather' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="./static/css/style.css">
 	</head>
 	<body id="landing-page">
-		<nav id="navbar">
-        	<div class="row">
-	            <a class="navicon-button x">
-			    	<div class="navicon"></div>
-				</a>
-	        </div>
-	        <div id="nav-list">
-	        	<ul>
-	            	<li><a href="./">/projects</a></li>
-	            	<li><a href="../photos.html">/film</a></li>
-	                <li><a href="#">/profile</a></li>
-	            </ul>
-	        </div>
-        </nav>
 		<div id="content">
 			<div id="container">
 				<div id="signature"></div>
+				<div id="enter"><a href="./about.html">ENTER</a></div>
 				<div id="banner-words">
-					<i class="inliner"></i>
-					<div id="titles" class="row">
-						<!-- <h2>Please be check back later, the website is currently being updated.<br>In the meantime, <a href="https://github.com/MBloom/">check me out on GitHub</a></h2> -->
-						<span>></span><span id="typed" style="white-space:pre;"></span>
-						<div id="enter"><a href="./projects/">ENTER</a></div>
+					<div id="titles" class="dev">
+						<div><span>D</span></div>
+						<div><span>E</span></div>
+						<div><span>V</span></div>
+						<div><span>E</span></div>
+						<div><span>L</span></div>
+						<div><span>O</span></div>
+						<div><span>P</span></div>
+						<div><span>E</span></div>
+						<div><span>R</span></div>
+					</div>
+					<div id="titles" class="dev2">
+						<div><span>C</span></div>
+						<div><span>R</span></div>
+						<div><span>E</span></div>
+						<div><span>A</span></div>
+						<div><span>T</span></div>
+						<div><span>O</span></div>
+						<div><span>R</span></div>
+					</div>
+					<div id="titles" class="dev3">
+						<div><span>S</span></div>
+						<div><span>T</span></div>
+						<div><span>O</span></div>
+						<div><span>R</span></div>
+						<div><span>Y</span></div>
+						<div><span></span></div>
+						<div><span>T</span></div>
+						<div><span>E</span></div>
+						<div><span>L</span></div>
+						<div><span>L</span></div>
+						<div><span>E</span></div>
+						<div><span>R</span></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
-	<!-- Placed at the end so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
-	<script src="../js/typed.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+	<script src="js/jquery.history.js"></script>
+	<script src="js/script.js"></script>
 	<script src="js/jquery.lazylinepainter-1.1.min.js"></script>
 	<script src="js/raphael-min.js"></script>
 	<script src="js/main.js"></script>
-	<script>
-	//typed.js
-	$(function(){
-        $("#typed").typed({
-        	// strings: ["designer","front-end-developer", "photographer"],
-            strings: ["d","f"],
-            startDelay: 1000,
-            backDelay: 300,
-            typeSpeed: 75,
-            backSpeed: 50,
-            loop: false,
-            cursorChar: "_",
-            callback: function(){
-            	typedCompleted();
-            }
-        });
-        function typedCompleted() {
-        	$('#signature').lazylinepainter( 
-			 {
-			    "svgData": pathObj,
-			    "strokeWidth": 5,
-			    "strokeColor": "#000000",
-			    "delay": 1000,
-			    "onComplete": function(){
-			    	$('#enter').delay(1000).fadeIn(500);
-			    }
-			}).lazylinepainter('paint');
-        }
-    });
-	</script>
 </html>

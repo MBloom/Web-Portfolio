@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile | Matt Bloom</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Matt Bloom">
+        <link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+        <link href='http://fonts.googleapis.com/css?family=Merriweather|Josefin+Slab:100,300,400,600,700|Lato:100,300,400,700|Playfair+Display:400,700,900|Inconsolata' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+    <body>
+        <nav id="navbar">
+        	<div class="row">
+                <img src="../static/img/signature.png" alt="logo">
+	            <ul id="temp">
+                    <li>Under construction</li>
+                </ul>
+	        </div>
+        </nav>
+        <div id="content">
+            <div id="container">
+                <div id="about" class="row">
+                    <div class="text">
+                        <h1>Profile</h1>
+                        <h2>TL;DR</h2>
+                        <p>I am a nerd at heart and love to code. Passionate about collaboration in all its forms, I am energized by others and constantly seek opportunities to work with and learn from my colleagues. I take my job, but never myself, too seriously and I am looking to join a team that gets the job done, but knows how to have fun.</p>
+                        <h2>Laser Focused</h2>
+                        <p>I graduated from the University of Virginia in 2015 with a degree in Computer Engineering. During my time there I was a member of the University Guide Service. As a guide I led historical tours of Thomas Jefferson’s academical village and what was the original university. I also gave admissions tours to prospective students, sharing my UVA perspective. Additionally, I was lucky enough to pursue my passion of photography as a part-time photo editor for the Cavalier Daily, the student run newspaper.</p>
+                        <p>After graduation I spent six months at AOL as an associate product manager. I was the lead product owner for an editorial product that leveraged several proprietary APIs to automate content creation. Ultimately, this allowed editors to post up to three times as many articles in a given day. In September I received my Certified Scrum Product Owner certification.</p>
+                        <h2>Laid Back</h2>
+                        <p>When I’m not spending my time programming or nerding out, I am constantly on the search for good new music. I enjoy going to live shows and enjoy everything from Chance the Rapper to Zac Brown Band. I also enjoy spending time outdoors cycling or indoors cooking up something tasty to eat. I have to admit, I make some mean carne asada tacos.</p>
+                        <h2>What I want to do next</h2>
+                        <p>With skills as both a software developer and a product manager I hope that I to be in a job where I will be able to employ my technical skills but also work with people. I am a social  person and would go mad if I was behind a computer screen all day. Good culture is important to me. Employees should be excited to show up to work and believe in the success of their product. While competition is important to motivate employees, I believe that a collaborative and respectful environment is key to success. Ultimately, I want a job that is going to challenge me to better myself and advance my skillset. Life is an endless pursuit of knowledge and I believe it is a waste to be in a position from which I cannot learn.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="row">
+            <p>Matt Bloom &copy; 2016</p>
+        </footer>
+    </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+    <script src="js/jquery.history.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/jquery.lazylinepainter-1.1.min.js"></script>
+    <script src="js/raphael-min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $("#navbar ul a").on('click', function(e){
+            e.preventDefault();
+            $(this).closest('li').addClass('current').siblings().removeClass('current')
+        })
+        $(window).scroll(function(){
+            if($(window).scrollTop() > 50)
+                $('#select').css('opacity', '0');
+            else
+                $('#select').css('opacity', '1');
+        })
+    </script>
+</html>

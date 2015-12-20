@@ -12,17 +12,15 @@
 	<body>
 		<nav id="navbar">
         	<div class="row">
-	            <a href="../index.html">
-	                <img src="../static/img/signature.png" alt="logo">
-	            </a>
-	            <a class="navicon-button x">
+	            <img src="../static/img/signature.png" alt="logo">
+	            <a class="navicon-button x ignore">
 			    	<div class="navicon"></div>
 				</a>
 	        </div>
-	        <div id="nav-list">
+	        <div id="nav-list" class="strike-through">
 	        	<ul>
-	            	<li><a href="./">/projects</a></li>
-	            	<li><a href="../photos.html">/film</a></li>
+	            	<li><a href="../projects/" title="Projects | Matt Bloom">/projects</a></li>
+	            	<li><a href="./photos.html" title="Photos | Matt Bloom">/film</a></li>
 	                <li><a href="#">/profile</a></li>
 	            </ul>
 	        </div>
@@ -54,19 +52,19 @@
 					<div class="grid-item col1 portrait"><img src="./static/img/sm_img-16.jpg" alt=""></div>
 				</div>
 			</div>
+			<div id="image-holder" onclick="closeImage(this);"></div>
 		</div>
-		<div id="image-holder" onclick="closeImage(this);"></div>
 		<footer>
 			<p>Matt Bloom &copy; 2014</p>
 		</footer>
 	</body>
 	<!-- Placed at the end so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 	<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+	<script src="../js/jquery.history.js"></script>
 	<script src="../js/script.js"></script>
 	<script>
-		//history.js
+	//history.js
 	$(function(){
 		var History = window.History;
 		if (History.enabled) {
@@ -81,18 +79,19 @@
 		History.Adapter.bind(window, 'statechange', function() {
 			var State = History.getState();
 			$.get(State.url, function(data) {
+				var newData = $(data).find('#container').parent().html();
 			    $('#content').fadeTo(600, 0, function() {
-					$('#content').html($(data).find('#container').html()).delay(200).fadeTo(600, 1);
+					$('#content').html(newData).delay(200).fadeTo(600, 1);
 					masonryInit();
 				});
 			});
 		});
 
 		// navigation link handler
-		$('body').on('click', 'a', function(e) {
+		$('body').on('click', 'a:not(.ignore)', function(e) {
 			e.preventDefault();
 			var urlPath = $(this).attr('href');
-			var title = $(this).text();
+			var title = $(this).attr('title');
 			History.pushState({urlPath: urlPath}, title, urlPath);
 		});
 	});

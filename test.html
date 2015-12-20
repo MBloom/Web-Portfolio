@@ -1,0 +1,32 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<title>TEST PAGE</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Matt Bloom">
+		<link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./static/css/style.css">
+	</head>
+	<body>
+		<a href="test">
+		</div>
+	</body>
+	<!-- Placed at the end so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+	<script src="js/typed.js"></script>
+	<script src="js/jquery.history.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/jquery.lazylinepainter-1.1.min.js"></script>
+	<script src="js/raphael-min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+	$("#updateSong").click(function() {
+		$.get(State.url, function(data) {
+			var newData = $(data).text();
+			$("#test").html(newData).delay(200).fadeTo(600, 1);
+		});
+	});
+	</script>
+</html>
